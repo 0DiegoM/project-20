@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+
+    
+    
+    
+.derecha{
+    background: #ffffff;
+    height: 100vh; 
+    width: 50%;
+    text-align: center;
+    
+}
+    
+    .izquierda{  background-image: linear-gradient(to right top, #df4646, #d925ca, #7518c1, #0a0daa, #007e94);  background-size: cover;   background-position: center;
+width: 50%;
+height: 100vh;
+
+    }
+
+    #pantalla-dividida{
+display: flex;
+    }
+    
+    h1{
+font-size: 70px;
+    width: 50%;
+    margin: auto;
+margin-bottom: 40px;
+margin-top: 50px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    } 
+    
+    
+    
+    #login_button {  margin-top: 40px;   border-radius: 80px;   width: 180px;
+
+
+    }
+    
+    .link{
+text-align: center;
+
+
+    }
+
+input {
+    border-radius: 80px;
+    width: 250px;
+   
+}
+
+.logo {
+   margin-top: 300px;
+    border-radius: 170px;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+}
