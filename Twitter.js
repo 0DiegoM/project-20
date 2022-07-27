@@ -1,5 +1,5 @@
 function addUser() {
-    username = document.getElementById('username').value;
-    localStorage.setItem('username', username);
+    user_name = document.getElementById('user_name').value;
+    localStorage.setItem('user_name', user_name);
     window.location = 'Twitter_room.html'
 }
