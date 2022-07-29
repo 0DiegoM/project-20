@@ -1,66 +1,48 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
-    />
+    
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="Twitter_page.css">
 
-    <link rel="stylesheet" type="text/css" href="Twitter_room.css" />
-  </head>
-  <body>
-    <div class="container">
-      <button
-        onclick="logout()"
-        id="logout"
-        class="glyphicon glyphicon-log-out btn btn-danger"
-      >
-        Salir
-      </button>
-      <center>
-        <h1 class="header">
-          Twitter
-          <sup>
-            <img
-              class="logo"
-              src="data:image/png;base64,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"
-            />
-          </sup>
-        </h1>
-
-        <div id="output" style="text-align: left; margin-bottom: 70px"></div>
-      </center>
-    </div>
+</head>
+<body>
+<div class="container" >
+    <button onclick="logout()" id="logout" class="glyphicon glyphicon-log-out btn btn-danger">Salir</button>
     <center>
-      <div class="input_div_message_page">
-        <label> Send: </label>
-        <input
-          type="text"
-          id="msg"
-          class="form-control"
-          placeholder="Type your message here"
-        />
-        <br />
-        <button class="btn btn-success" onclick="Send()" id="icon">📨</button>
-      </div>
+<h1 class="header"> Twitter
+<sup>
+<img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEX///9Vre5Pq+5Ep+1Jqe1Bpu33+/7u9v2NxfNjs+/7/f/q9P2DwPJXru7M5PnW6frf7vup0vW62/eezfSz1/Zut/CYyvR5vPHU6PrH4fmn0fVstvCFwfKbzPTN5fmQxvMtoOzW2RRyAAAGSklEQVR4nO2d25aqMAyGnTScRTmKqKP7/Z9yAx5GR4RCm5ZZK9/V3Aj9SdokPc1qxTAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzCMDaJzVhzyvMg2ie2mEJAUFQpEaEEUosy3tpukE+8QC4CvZwAE7IZNGbqGmqdMcnJe1T1UivL8+WebwFwTlXB90a/vpvGDHbelk5pt6FyKAX2dRmfX86v9UYAgc9Jko+9ZboWD+jqN8S8zhlnQfBbw9TXjF5UT6XpUAsMGvOFkT7/ZXrD7KkJbK95a1Xw/Tf6xETL6WjX57RfbPL55NfQ5rx5OjYPoGcVqR1JgI7HRE2Un+Om0EGppQw9e+92h1PCkjbzA5o1HEPjk0qLW0IJ+iq4TwFr5QYmsi/YKPmmQ8oHj9UOiqkRXaoz5JDDWoqW/YXfXUpVYqShET4+aPjaP+IWVynOK8Tj4GUFZeuQ/nx4UJLqaBEY77YnNs3NBMPvx/nwfBbgLDOvyn8b86kb88rKvmXlFNCVQvIK3z+rWa0TUH/bDV+8CHKhuBjjNNiG22U24Pxzb6Kgp83jB+x3EZpUwb0+RJs62hR806rpPRDGkvofpOVEjVeiF+JOsOxTzHD2JyFtxM0789pA50CRuvamWKDQ8ZLpAmhI/6m0clpM6RKGSzjwE5uMvmoPb//kBp5hRKWG7C/ymEbhafWocHuV7ow6BRBZcDQwSIHaSNen8WPEjkHCabSDdAsjGf9+wV8lJOxy5F81jcJTAQCZNzBQVApLO92+HXUwcx9M4xaEUAsLisGWkE4EIxgKxQkbTvoBumvTGaN0DGBeDY46SQi1zYMOcJXoRistA7FCzoYHlGLlPLYLiU3dR64cGFMqaAETZL1JtLCWcZbvzIXHr04giOLyP7DJ+blXh6jChhQACq3T/MvL0Z++ymFgWDSf2I2ht6Rfn6K5z6f1wtapnGKGVCXHl51m9DxQEGogWLeu5Vuj2WSh1Q5VJ2glM9VONaFgSkkLPPMQsheRJ240Ji5uaFR6IlT2G/cySFZGyNGxJ/fs8fmbHiki39nulEGK9v/65GdkIQwPpwlonC5t88+v73K6ORIEFiYK4/F1tr6v4iMElrbeleYUOscCnnLKN3eYF0qc0FmP9VSF9OFTJKXUonLhEMoNvu0acuSI7hdpC53uCbsflg9BWunbFRHWoY+FoNkbybqtuSp6Vdti0Id2u2WdSi0YEEwJ/b6kxKtBQ+au06U4J8tLpjo2aosNANLySWIqJhubZWnI7fjppw4cipRU/Ja9+nwhjCxINTXff8OQOu2jFTELzIDIv0dhIesP7MizR2Gz3g1Di2JlOhIVTs4cPRz9pMLH4+0YSmDOjyWD4TAGmNCLZWbVRjTGa8FWg2245zvmE9CJN5jN9bFPieVS4WFB1LjaJ57putK9TX8/u+884NkwYOe3lDg2I5PmNFRManVe01AvPxha6rQ2kxlZprMVC6eP0qgLNlk3PmCn1Kc7gyaK2y1AWx+aFQ1M2Ys7FUqS4Y8BP6a6HkELp3gAphP6zzNOg7orm5y7eGDlEo4xdH+0g3YlJvslLiohu1g0XctmVWxIFDYNLMWOkJPsUIV5AJ7wTVQQazazaS3M+6tYo6Pc/TWRfOTpnpKae8jeC295fCXrmNJDsOLoiYVLsqiBWnplC+7nMIJFq+a980RYxhWqas3CBnvKym9olW+RkygPqsi2YqGdwix5kvIv6oinhpR7KhLmGiE9654Ua3reGtA1gsXdcb0860lLyOy/m4hWxlrRbLHOMiYpST1UBhLeuziaqd2+Xqc9l4nVa+nFf6u3Q29Z59XrxrRJAeTGSHGHuBGvfv1x8vwq+UPPKL5ZLqOejyoEr+pRdkb1hip5NTDGpBo7sLWEmyLTvgQKxXoKDPqF3nxc41SJmtV/Rt8+rsd8C9bXUOmI8IO4W5p/PJBfFvWwggmxB40sfYV3Njvcg4Huh7vmKl5XTRXb/IWexJdI7bu3H8irbi4bK9E9Y74UoO8UOjqQ6rTjx+06sv4S7L/wjiPu/pOrU3v5CbJLY4JTWCx44pXGTOkt366oqgyAOgqpan3ZpVifun7UcwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMQ8F/xNdSHXy9fscAAAAASUVORK5CYII=">
+</sup>
+ </h1>
+
+ <div id="output" style="text-align: left; margin-bottom: 70px;">  
+ </div>
+
     </center>
+    
+</div>
+<center>
+    <div class="input_div_message_page">
+<label> Send: </label>
+<input type="text" id='msg' class="form-control" placeholder="Type your message here">
+<br>
+<button class="btn btn-success" onclick="Send()" id="icon"> 📨 </button>
+    </div>
+</center>
     <script src="Twitter_page.js"></script>
-  </body>
+</body>
 </html>
