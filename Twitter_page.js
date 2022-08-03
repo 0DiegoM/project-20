@@ -32,12 +32,10 @@ function getData() {
             childKey = childSnapshot.key;
             childData = childSnapshot.val();
             if(childKey != 'purpose') {
-
-firebase_messageid = childKey;
+firebase_message_id = childKey;
 message_data = childData;
-console.log(firebase_messageid);
+console.log(firebase_message_id);
 console.log(message_data);
-
 name = message_data['name'];
                 message = message_data['message'];
                 like = message_data['like'];
@@ -54,17 +52,16 @@ name = message_data['name'];
 }
 getData();
 
-function updateLike() {
-    
-console.log('clicked on like button-' + message_id);
-button_id = message_id;
-likes = document.getElementById(button_id).value;
-update_likes = Number(likes) + 1;
-console.log(update_likes);
-firebase.database().ref(room_name).child(message_id).update({
-    like: update_likes
-});
-}
+function updateLike(message_id) {
+    console.log('clicked on like button-' + message_id);
+    button_id = message_id;
+    likes = document.getElementById(button_id).value;
+    update_likes = Number(likes) + 1;
+    console.log(update_likes);
+    firebase.database().ref(room_name).child(message_id).update({
+        like: update_likes
+    });
+    }
 
 
 function logout() {

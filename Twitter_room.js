@@ -45,7 +45,7 @@ document.getElementById('user_name').innerHTML = "Hola "+ user_name + "!";
           span_with_tag = "<span class='glyphicon glyphicon-thumbs-up'>Like: " + like + "</span></button><hr>";
   
           row = name_with_tag + message_with_tag + like_button + span_with_tag;
-          document.getElementById("output").innerHTML += row;
+          document.getElementById('output').innerHTML += row;
         }
       });
     });
